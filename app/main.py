@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 
-from processor.processor import Processor
+from processors.processor import Processor
 
 api = FastAPI()
 

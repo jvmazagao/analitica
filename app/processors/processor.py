@@ -4,7 +4,7 @@ import urllib.parse
 import http.cookiejar
 from bs4 import BeautifulSoup
 
-from extractor.extractor import Extractor
+from extractors.extractor import Extractor
 
 class Processor:
     def get_data(self, ticker):
