@@ -13,7 +13,9 @@ class Processor:
         opener = urllib.request.build_opener(urllib.request.HTTPCookieProcessor(cookie_jar))
         opener.addheaders = [('User-agent', 'Mozilla/5.0 (Windows; U; Windows NT 6.1; rv:2.2) Gecko/20110201'),
                             ('Accept', 'text/html, text/plain, text/css, text/sgml, */*;q=0.01')]
-        extractor = Extractor({})
+        
+        extractor = Extractor()
+        
         with opener.open(url) as link:
             content = link.read().decode('ISO-8859-1')
             soup = BeautifulSoup(content, 'html.parser')
