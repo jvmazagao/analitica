@@ -11,7 +11,7 @@ class Parser(ABC):
     def is_valid(self, elements):
         return len(elements) == self.size
     
-    def clean_key(self, key):
+    def clean_key(self, key: str):
         return key.lstrip('?')
     
 class SingleLineParser(Parser):
@@ -30,11 +30,9 @@ class DoubleLineParser(Parser):
     def parse(self, elements, data: dict):
         key_1, key_2 = [self.clean_key(x) for x in elements]
         if key_1 == 'Últimos 12 meses':
-            data['Dados demonstrativos de resultados'][key_1] = {}
-            data['Dados demonstrativos de resultados'][key_2] = {}
-        else: 
-            data[key_1] = {}
-            data[key_2] = {}
+            data.update({'Dados demonstrativos de resultados': { key_1: {}, key_2: {}}})
+            return data
+        data.update({key_1: {}, key_2: {}})
         return data
     
 class FourLineParser(Parser):
